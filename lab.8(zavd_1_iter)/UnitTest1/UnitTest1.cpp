@@ -12,16 +12,25 @@ namespace UnitTest1
 		
 		TEST_METHOD(TestMethod1)
 		{
-			char A[] = "QSJHJKHKHSQGHJSQ";
-			int a = Include(A, "QS");
-			
+			int s1 = Include("VV+SQ+VV");
 			Assert::IsTrue;
 		}
+
 		TEST_METHOD(TestMethod2)
 		{
-			char A[] = "JHJKHKHGHJ";
-			int a = Include(A, "QS");
+			int s2 = Include("VV+QS+VV");
+			Assert::IsTrue;
+		}
 
+		TEST_METHOD(TestMethod3)
+		{
+			int s3 = Include("-Q+S-");
+			Assert::IsFalse;
+		}
+
+		TEST_METHOD(TestMethod4)
+		{
+			int s4 = Include("_S_Q_");
 			Assert::IsFalse;
 		}
 	};

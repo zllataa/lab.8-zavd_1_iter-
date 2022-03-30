@@ -5,21 +5,16 @@
 #include <iostream>
 using namespace std;
 
-bool Include(const char* s, const char* cs)
+bool Include(char* s)
 {
-	bool b, r = true;
-	for (int i = 0; cs[i] != '\0'; i++)
-	{
-		b = false;
-		for (int j = 0; s[j] != '\0'; j++)
-			if (cs[i] == s[j])
-			{
-				b = true;
-				break;
-			}
-		r = r && b;
-	}
-	return r;
+	bool b = false;
+	for (int j = 0; s[j] != '\0'; j++)
+		if ((s[j] == 'S') && (s[j+1] == 'Q' || s[j - 1] == 'Q'))
+		{
+			b = true;	
+			break;
+		}
+	return b;
 }
 
 int main()
@@ -27,13 +22,10 @@ int main()
 	char s[101];
 	cout << "Enter string:" << endl;
 	cin.getline(s, 100);
-	char cs[] = "SQ";
 	cout << "Included groups of 'SQ or QS': ";
-
-	if (Include(s, cs))
+	if (Include(s))
 		cout << "yes" << endl;
 	else
 		cout << "no" << endl;
-	
 	return 0;
 }
